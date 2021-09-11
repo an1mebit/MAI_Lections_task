@@ -28,7 +28,7 @@ FooString::FooString(const char* tbuf)
 
 FooString::~FooString()
 {
-	delete[] buf;
+	//delete[] buf;
 }
 
 void FooString::show()
