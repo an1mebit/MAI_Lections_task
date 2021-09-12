@@ -7,12 +7,9 @@ class FooString
 {
 private:
 	char* buf;
-	int size;
-  
 public:
 	FooString(const char* tbuf);
 	~FooString();
-  
 	void show();
 	void add(FooString str);
 	bool TestAdd();
@@ -21,7 +18,7 @@ public:
 
 FooString::FooString(const char* tbuf)
 {
-	size = strlen(tbuf) + 1;
+	int size = strlen(tbuf)+1;
 	buf = new char[size];
 	strcpy_s(buf, size, tbuf);
 }
@@ -38,7 +35,7 @@ void FooString::show()
 
 void FooString::add(FooString str)
 {
-	size = size + str.size;
+	int size = strlen(buf) + strlen(str.buf)+1;
 	strcat_s(buf, size, str.buf);
 }
 
@@ -46,10 +43,10 @@ bool FooString::TestAdd()  //Тестирует фунцию add(FooString str) 
 {
 	FooString str1("gg");
 	FooString str2(" wp");
-	std::cout << "The size of two strings: " << str1.size << " and " << str2.size << std::endl; //должно вывести 3 и 4
+	std::cout << "The size of two strings: " << strlen(str1.buf) << " and " << strlen(str2.buf) << std::endl; //должно вывести 2 и 3
 	str1.add(" wp");
-	std::cout << "The size of the combined strings: " << str1.size << std::endl; //должно вывести 7
-	if (size = str1.size + str2.size)
+	std::cout << "The size of the combined strings: " << strlen(str1.buf) << std::endl; //должно вывести 5
+	if (strlen(str1.buf) == 5)
 		return true;
 	else
 		return false;
