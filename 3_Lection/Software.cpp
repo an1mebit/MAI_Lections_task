@@ -30,24 +30,20 @@ public:
 
 	void send(char* buf, int len)
 	{
-		/*char output[9];
-		if (buf[0] != NULL)
-		{
-			for (int i = 0; i < strlen(buf); i++)
-			{
-				itoa(buf[i], output, 2);
-				cout << puts(output) << " ";
-			}
-		}
-		*/
 		if (buf[0] != NULL)
 		{
 			for (int i = 0; i < len; i++)
 			{
+			
 				if (buf[i] == 0)
 					break;
-				bitset<8> x(buf[i]);
-				cout << x << ' ';
+				int l = 128;
+				while (l > 0)
+				{
+					cout << bool(buf[i]&l);
+					l = l >> 1;
+				}
+				cout << " ";
 			}
 		}
 	}
