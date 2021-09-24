@@ -32,6 +32,8 @@ int Image::get(int x, int y)
     {
         if (mx*my < y*my + x)
             throw 132;
+        if ((mx < x && my < y) || mx < x || my < y)
+            throw 101;
     }
     catch (int error)
     {
@@ -48,7 +50,7 @@ int Image::set(int x, int y, int color)
     {
         if (mx * my < y*my + x)
             throw 123;
-        if (color > 255)
+        if (color > 255 || color < -1)
             throw 111;
     }
     catch (int error)
@@ -83,6 +85,7 @@ int main()
     Image img2(8, 8);
     if (img1 == img2)
         cout << "The Images have the same format" << endl;
+    
     img1.set(4, 4, 245);
     img2.set(3, 3, 124);
 
