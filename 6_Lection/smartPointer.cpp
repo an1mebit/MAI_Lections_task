@@ -56,24 +56,25 @@ namespace money
 
 namespace money
 {
+	template <class T>
 	class rich
 	{
-		Morgenshtern* pMorgen;
+		T* pMorgen;
 
 	public:
-		rich(Morgenshtern* pVal) : pMorgen(pVal){
+		rich(T* pVal) : pMorgen(pVal){
 		}
 		~rich()
 		{
 			delete pMorgen;
 		}
 
-		Morgenshtern& operator*()
+		T& operator*()
 		{
 			return *pMorgen;
 		}
 
-		Morgenshtern* operator->()
+		T* operator->()
 		{
 			return pMorgen;
 		}
@@ -83,7 +84,7 @@ namespace money
 using namespace money;
 void main()
 {
-	rich p(new Morgenshtern("track.txt", "merin"));
+	rich<Morgenshtern> p(new Morgenshtern("track.txt", "merin"));
 	p->addTrack();
 	p->TrackList();
 }
