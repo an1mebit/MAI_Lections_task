@@ -47,16 +47,11 @@ public:
         delete[] arr;
     }
 
-    int hashCode(K key)
-    {
-        return key % capacity;
-    }
-
     void insertNode(K key, V value)
     {
         HashNode<K, V>* temp = new HashNode<K, V>(key, value);
 
-        int hashIndex = hashCode(key);
+        int hashIndex = key % capacity;
 
         while (arr[hashIndex] != NULL && arr[hashIndex]->key != key && arr[hashIndex]->key != -1)
         {
@@ -71,7 +66,7 @@ public:
 
     V deleteNode(int key)
     {
-        int hashIndex = hashCode(key);
+        int hashIndex = key % capacity;
 
         while (arr[hashIndex] != NULL)
         {
@@ -94,7 +89,7 @@ public:
 
     V get(int key)
     {
-        int hashIndex = hashCode(key);
+        int hashIndex = key % capacity;
         int counter = 0;
 
         while (arr[hashIndex] != NULL)
