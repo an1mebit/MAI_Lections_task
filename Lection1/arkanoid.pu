@@ -1,0 +1,52 @@
+@startuml : arkanoid diagramm
+abstract class monobehaviour
+{
+    -height : double
+    -length : double
+    +Start() : void
+    +Update() : void    
+}
+class player
+{
+    -height : double
+    -length : double
+    +playerPosition : double
+    -speed : double
+    +score : int
+    +life : int
+    +Start() : void
+    +Update() : void
+}
+class ball
+{
+    -height : double
+    -length : double
+    +speed : double
+    +renctagle : double
+    +Start() : void
+    +Update() : void
+}
+class platform
+{
+    -height : double
+    -length : double
+    +scoreValue : int
+    +life : int
+    +Start() : void
+    +Update() : void
+}
+class wall
+{
+    -height : double
+    -length : double
+    +Start() : void
+    +Update() : void       
+}
+platform --|> monobehaviour
+wall --|> monobehaviour
+player --|> monobehaviour
+ball --|> monobehaviour
+player -> ball
+ball -> platform
+ball -> wall
+@enduml
