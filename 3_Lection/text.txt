@@ -1,4 +1,0 @@
-BinaryProtocol
-BinaryProtocol
-HexProtocol
-WrongProtocol
